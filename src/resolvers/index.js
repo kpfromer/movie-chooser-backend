@@ -1,10 +1,11 @@
 import { GraphQlDateTime } from 'graphql-iso-date';
 
-import userResolvers from './user';
 import movieResolvers from './movie';
+import tagResolvers from './tag';
+import userResolvers from './user';
 
 const customScalarResolver = {
   Date: GraphQlDateTime
 };
 
-export default [userResolvers, movieResolvers];
+export default [userResolvers, tagResolvers, movieResolvers];

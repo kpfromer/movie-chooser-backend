@@ -1,7 +1,8 @@
 import { gql } from 'apollo-server-express';
 
-import userSchema from './user';
 import movieSchema from './movie';
+import tagSchema from './tag';
+import userSchema from './user';
 
 const linkSchema = gql`
   scalar Date
@@ -15,4 +16,4 @@ const linkSchema = gql`
   }
 `;
 
-export default [linkSchema, userSchema, movieSchema];
+export default [linkSchema, userSchema, tagSchema, movieSchema];

@@ -13,10 +13,12 @@ export default {
 
   Mutation: {
     createMovie: combineResolvers(isAuthenticated, async (parent, { title }, { models, me }) => {
-      const movie = await models.Movie.create({
-        title,
-        userId: me.id
-      });
+      const movie = await models.Movie.create({ title, userId: me.id });
+
+      return movie;
+    }),
+    addTagToMovie: combineResolvers(isAuthenticated, async (parent, { movieId, tagId }, { models }) => {
+      const movie = await models.Movie.findByIdAndUpdate(movieId, { $push: { tags: tagId } });
 
       return movie;
     }),
@@ -34,6 +36,9 @@ export default {
   Movie: {
     user: async (movie, args, { loaders }) => {
       return await loaders.user.load(movie.userId);
+    },
+    tags: async (movie, args, { models }) => {
+      return await models.Tag.find({ _id: { $in: movie.tags } });
     }
   }
 };

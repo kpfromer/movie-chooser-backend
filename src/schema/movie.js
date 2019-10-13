@@ -15,7 +15,11 @@ export default gql`
   type Movie {
     id: ID!
     title: String!
-    # createAt: Date!
+    posterPath: String
+    description: String
+    voteAverage: Float
+    releaseDate: Date
+    runtime: Float
     tags: [Tag!]
     user: User!
   }

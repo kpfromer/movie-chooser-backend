@@ -6,5 +6,6 @@ export const config = convict({
     env: 'MONGO_URI',
     uri: { default: 'mongodb://localhost:27017/movie-chooser-graphql' }
   },
-  auth: { secret: { default: 'jwt-secret' } }
+  auth: { secret: { default: 'jwt-secret' } },
+  apiKey: { default: 'bad-api-key', env: 'API_KEY' }
 });

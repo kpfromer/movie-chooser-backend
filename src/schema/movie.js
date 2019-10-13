@@ -8,13 +8,19 @@ export default gql`
 
   extend type Mutation {
     createMovie(title: String!): Movie!
+    addTagToMovie(movieId: ID!, tagId: ID!): Movie!
     deleteMovie(id: ID!): Boolean!
   }
 
   type Movie {
     id: ID!
     title: String!
-    # createAt: Date!
+    posterPath: String
+    description: String
+    voteAverage: Float
+    releaseDate: Date
+    runtime: Float
+    tags: [Tag!]
     user: User!
   }
 `;

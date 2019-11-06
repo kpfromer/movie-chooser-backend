@@ -28,15 +28,13 @@ export default {
         throw new UserInputError('No user found with this login credentials.');
       }
 
-      console.log({ user });
-
       const isValid = await user.validatePassword(password);
 
       if (!isValid) {
         throw new AuthenticationError('Invalid login or password.');
       }
 
-      return { token: createToken(user, config.get('auth.secret'), '30m') };
+      return { token: createToken(user, config.get('auth.secret'), '30m'), user };
     },
 
     signUp: async (parent, { username, firstName, lastName, password }, { models }) => {
@@ -46,7 +44,7 @@ export default {
         lastName,
         password: await bcryptjs.hash(password, 10)
       });
-      return { token: createToken(user, config.get('auth.secret'), '30m') };
+      return { token: createToken(user, config.get('auth.secret'), '30m'), user };
     }
 
     // todo: updateUser, deleteUser, User

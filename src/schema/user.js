@@ -8,15 +8,16 @@ export default gql`
   }
 
   extend type Mutation {
-    signUp(username: String!, firstName: String!, lastName: String!, password: String!): Token!
+    signUp(username: String!, firstName: String!, lastName: String!, password: String!): Login!
 
-    signIn(login: String!, password: String!): Token!
+    signIn(login: String!, password: String!): Login!
     # updateUser(username: String!): User!
     # deleteUser(id: ID!): Boolean!
   }
 
-  type Token {
+  type Login {
     token: String!
+    user: User!
   }
 
   type User {

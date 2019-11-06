@@ -8,8 +8,7 @@ export default {
   Query: {
     movies: async (parent, args, { models }) => {
       const movies = await models.Movie.find();
-
-      return movies;
+      return movies.filter(movie => movie.watched === undefined || movie.watched === false);
     }
   },
 

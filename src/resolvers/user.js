@@ -54,9 +54,10 @@ export default {
 
   User: {
     movies: async (user, args, { models }) => {
-      return await models.Movie.find({
+      const movies = await models.Movie.find({
         userId: user.id
       });
+      return movies.filter(movie => movie.watched === undefined || movie.watched === false);
     }
   }
 };

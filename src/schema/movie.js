@@ -22,6 +22,7 @@ export default gql`
     runtime: Float
     tags: [Tag!]
     weight: Float
+    watched: Boolean
     user: User!
   }
 `;

@@ -2,7 +2,7 @@ import { combineResolvers } from 'graphql-resolvers';
 import moment from 'moment';
 import { searchMovie } from '../api/movie';
 
-import { isAuthenticated, isMovieOwner } from './authorization';
+import { isAuthenticated, isMovieOwner, isAdmin } from './authorization';
 
 export default {
   Query: {
@@ -63,6 +63,10 @@ export default {
         return true;
       }
       return false;
+    }),
+    watchMovie: combineResolvers(isAdmin, async (parent, { id }, { models }) => {
+      const movie = await models.Movie.findByIdAndUpdate(id, { $set: { watched: true } });
+      return !!movie;
     })
   },
 

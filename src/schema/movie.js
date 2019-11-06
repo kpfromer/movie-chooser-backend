@@ -10,6 +10,7 @@ export default gql`
     createMovie(title: String!): Movie!
     addTagToMovie(movieId: ID!, tagId: ID!): Movie!
     deleteMovie(id: ID!): Boolean!
+    watchMovie(id: ID!): Boolean!
   }
 
   type Movie {

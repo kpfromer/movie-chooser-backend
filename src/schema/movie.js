@@ -21,6 +21,7 @@ export default gql`
     releaseDate: Date
     runtime: Float
     tags: [Tag!]
+    weight: Number
     user: User!
   }
 `;

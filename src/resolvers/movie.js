@@ -32,11 +32,9 @@ export default {
         const createdTagNames = tags.map(tag => tag.name);
 
         const toBeCreated = tagNames.filter(name => !createdTagNames.includes(name)).map(name => ({ name }));
-        console.log({ toBeCreated, createdTagNames });
         if (toBeCreated.length > 0) {
           tags = [...tags, ...(await models.Tag.insertMany(toBeCreated))];
         }
-        console.log({ tags });
 
         const releaseDate = moment(stringReleaseDate, 'YYYY-MM-DD').toISOString();
         return await models.Movie.create({

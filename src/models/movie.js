@@ -8,7 +8,7 @@ const movieSchema = new mongoose.Schema({
   releaseDate: { type: String },
   runtime: { type: Number },
   tags: { type: [mongoose.Schema.Types.ObjectId], ref: 'Tag', default: [] },
-  weight: { type: Number, default: 0 },
+  weight: { type: Number, default: 3 },
   watched: { type: Boolean, default: false },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
